@@ -9,8 +9,13 @@ Template.postSubmit.events({
 
         Meteor.call('postInsert', post, function (err, result) {
             if (err) {
-                return alert(err);
+                return alert(err.reason);
             }
+
+            if (result.postExists) {
+                alert('The link is already there, dude!')
+            }
+
             Router.go('postPage', { _id: result._id });
         });
     }

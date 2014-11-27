@@ -1,4 +1,4 @@
-var postsData = Posts.find();
+var postsData = Posts.find({}, { sort: { submitted: -1 } });
 Template.postsList.helpers({
     posts: postsData
 });
